@@ -1,0 +1,27 @@
+package practices;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        // Create Customer object using constructor with five arguments
+    	Scanner scanner = new Scanner(System.in);
+    	String str = "-----------------------";
+        Customer customer1 = new Customer(101, "Dara", "Siem Reap", "010-249-446", 5000.0);
+        customer1.displayCustomerInfo();
+
+        // Create BankAccount object
+        BankAccount account1 = new BankAccount("Dara Savings", "35487654123654", "Savings", 1000.0);
+        account1.displayAccountInfo();
+
+        // Deposit money into account
+        account1.deposit(500.0);
+
+        // Withdraw money from account
+        account1.withdraw(200.0);
+
+        // Display updated account info
+        account1.displayAccountInfo();
+        scanner.close();
+    }
+}
+

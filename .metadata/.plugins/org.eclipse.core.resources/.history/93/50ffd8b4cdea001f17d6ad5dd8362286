@@ -1,0 +1,61 @@
+package homework1;
+
+import java.util.Scanner;
+
+public class SalaryTaxCalculator {
+    public static double calculateTax(double salary) {
+        double tax = 0;
+        double[][] taxBrackets = {
+            {1500000, 0.0},
+            {2000000, 0.05},
+            {8500000, 0.10},
+            {12500000, 0.15},
+            {Double.MAX_VALUE, 0.20}
+        };
+        
+        double previousLimit = 0;
+        for (double[] bracket : taxBrackets) {
+            double limit = bracket[0];
+            double rate = bracket[1];
+            
+            if (salary > previousLimit) {
+                double taxableAmount = Math.min(salary, limit) - previousLimit;
+                tax += taxableAmount * rate;
+            } else {
+                break;
+            }
+            previousLimit = limit;
+        }
+        return tax;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.println("សូមបញ្ចូលប្រាក់ខែ និងអត្ថប្រយោជន៍របស់អ្នក (ប្រចាំខែ)");
+        System.out.print("ប្រាក់ខែរបស់អ្នក (រៀល)៖ ");
+        double basicSalary = scanner.nextDouble();
+        
+        System.out.print("គុណប្រយោជន៍ (រៀល)៖ ");
+        double fringeBenefits = scanner.nextDouble();
+        double fringeBenefitsTaxable = fringeBenefits * 0.2;
+        
+        double totalIncome = basicSalary + fringeBenefitsTaxable;
+        double taxOnSalary = calculateTax(totalIncome);
+        double netSalary = totalIncome - taxOnSalary;
+        
+        System.out.println("\n-----------------------------");
+        System.out.printf("ពន្ធលើប្រាក់ខែ            : %,.2f រៀល\n", taxOnSalary);
+        System.out.printf("ប្រាក់ខែសុទ្ធ               : %,.2f រៀល\n", netSalary);
+        System.out.println("-----------------------------");
+        
+        System.out.println("\nប្រាក់ខែ (រៀល)         អត្រា");
+        System.out.println("0 - 1,500,000              0%");
+        System.out.println("1,500,001 - 2,000,000      5%");
+        System.out.println("2,000,001 - 8,500,000      10%");
+        System.out.println("8,500,001 - 12,500,000     15%");
+        System.out.println("12,500,001 ឡើងទៅ          20%");
+        
+        scanner.close();
+    }
+}

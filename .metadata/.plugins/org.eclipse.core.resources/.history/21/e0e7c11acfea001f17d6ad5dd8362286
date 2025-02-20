@@ -1,0 +1,63 @@
+package homework1;
+
+import java.util.Scanner;
+
+public class homework {
+    public static double calculateTax(double salary) {
+        double tax = 0;
+        double[][] taxBrackets = {
+            {1500000, 0.0},
+            {2000000, 0.05},
+            {8500000, 0.10},
+            {12500000, 0.15},
+            {Double.MAX_VALUE, 0.20}
+        };
+        
+        double previousLimit = 0;
+        for (double[] bracket : taxBrackets) {
+            double limit = bracket[0];
+            double rate = bracket[1];
+            
+            if (salary > previousLimit) {
+                double taxableAmount = Math.min(salary, limit) - previousLimit;
+                tax += taxableAmount * rate;
+            } else {
+                break;
+            }
+            previousLimit = limit;
+        }
+        return tax;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.println("===============================================");
+        System.out.println("Please Enter Your Salary and Benefits (Monthly)");
+        System.out.println("===============================================");
+        System.out.print("Your Salary (Riels)  ");
+        double basicSalary = scanner.nextDouble();
+        
+        System.out.print("fringe benefits (Riels):");
+        double fringeBenefits = scanner.nextDouble();
+        double fringeBenefitsTaxable = fringeBenefits * 0.2;
+        
+        double totalIncome = basicSalary + fringeBenefitsTaxable;
+        double taxOnSalary = calculateTax(totalIncome);
+        double netSalary = totalIncome - taxOnSalary;
+        
+        System.out.println("\n--------------------------------------------------");
+        System.out.printf("Salary tax                : %,.2f Riel\n", taxOnSalary);
+        System.out.printf("Net salary                  : %,.2f Riel\n", netSalary);
+        System.out.println("----------------------------------------------------");
+        
+        System.out.println("\nSalary  (Riel)         rate");
+        System.out.println("0 - 1,500,000               0%");
+        System.out.println("1,500,001 - 2,000,000       5%");
+        System.out.println("2,000,001 - 8,500,000      10%");
+        System.out.println("8,500,001 - 12,500,000     15%");
+        System.out.println("12,500,001                 20%");
+        
+        scanner.close();
+    }
+}

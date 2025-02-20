@@ -1,0 +1,4 @@
+INDEX VERSION 1.134+D:\Teacher Soth\JAVA Y3 S2\.metadata\.plugins\org.eclipse.jdt.core
+1288848795.index
+1865797976.index
+3436557224.index

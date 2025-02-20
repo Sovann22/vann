@@ -1,0 +1,105 @@
+package practices;
+
+class Customer {
+    private int id;
+    private String name;
+    private String address;
+    private String phone;
+    private double salary;
+
+    // Constructor with no arguments
+    public Customer() {}
+
+    // Constructor with one argument
+    public Customer(int id) {
+        this.id = id;
+    }
+
+    // Constructor with two arguments
+    public Customer(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    // Constructor with three arguments
+    public Customer(int id, String name, String address) {
+        this.id = id;
+        this.name = name;
+        this.address = address;
+    }
+
+    // Constructor with four arguments
+    public Customer(int id, String name, String address, String phone) {
+        this.id = id;
+        this.name = name;
+        this.address = address;
+        this.phone = phone;
+    }
+
+    // Constructor with five arguments
+    public Customer(int id, String name, String address, String phone, double salary) {
+        this.id = id;
+        this.name = name;
+        this.address = address;
+        this.phone = phone;
+        this.salary = salary;
+    }
+
+    // Method to display customer information
+    public void displayCustomerInfo() {
+        System.out.println("Customer ID: " + id);
+        System.out.println("Name: " + name);
+        System.out.println("Address: " + address);
+        System.out.println("Phone: " + phone);
+        System.out.println("Salary: " + salary);
+    }
+
+    public static void main(String[] args) {
+        // Creating an object using the constructor with five arguments
+        Customer customer = new Customer(101, "Dara", "Siem Reap", "010249446", 50000.0);
+        customer.displayCustomerInfo();
+    }
+}
+
+class BankAccount {
+    private String accountName;
+    private String accountNumber;
+    private String accountType;
+    private double balanceAmount;
+
+    // Constructor
+    public BankAccount(String accountName, String accountNumber, String accountType, double balanceAmount) {
+        this.accountName = accountName;
+        this.accountNumber = accountNumber;
+        this.accountType = accountType;
+        this.balanceAmount = balanceAmount;
+    }
+
+    // Method to deposit money
+    public void deposit(double amount) {
+        if (amount > 0) {
+            balanceAmount += amount;
+            System.out.println("Deposited: " + amount);
+        } else {
+            System.out.println("Invalid deposit amount.");
+        }
+    }
+
+    // Method to withdraw money
+    public void withdraw(double amount) {
+        if (amount > 0 && amount <= balanceAmount) {
+            balanceAmount -= amount;
+            System.out.println("Withdrawn: " + amount);
+        } else {
+            System.out.println("Invalid withdrawal amount.");
+        }
+    }
+
+    // Method to display account information
+    public void displayAccountInfo() {
+        System.out.println("Account Name: " + accountName);
+        System.out.println("Account Number: " + accountNumber);
+        System.out.println("Account Type: " + accountType);
+        System.out.println("Balance: " + balanceAmount);
+    }
+}

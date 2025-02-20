@@ -1,0 +1,111 @@
+package homework2;
+
+import java.util.Scanner;
+
+public class homework2 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("Enter the last 6 digits of your phone number: ");
+        int phoneNumber = scanner.nextInt();
+        
+        int result = calculateNumerology(phoneNumber);
+        
+        System.out.println("Your fortune number is: " + result);
+        System.out.println("Fortune meaning: " + getFortuneMeaning(result));
+        
+        scanner.close();
+    }
+    
+    public static int calculateNumerology(int phoneNumber) {
+        double divisionResult = phoneNumber / 80.0;
+        double decimalPart = divisionResult - Math.floor(divisionResult);
+        return (int) Math.round(decimalPart * 80);
+    }
+    
+    public static String getFortuneMeaning(int number) {
+        String[] fortunes = {
+            "Very good: Great success and prosperity.",
+            "Normal: Some luck, but no significant gains.",
+            "Very good: Prosperity and accomplishments.",
+            "Bad: Many obstacles and difficulties ahead.",
+            "Very good: Success in business and honor.",
+            "Very good: Good luck and great rewards.",
+            "Good: Patience will lead to great success.",
+            "Good: Opportunities for success.",
+            "Bad: Alone with struggles, hard to gain wealth.",
+            "Bad: Wasted efforts with no gains.",
+            "Good: Stable, respected by others.",
+            "Bad: Weak and unsuccessful.",
+            "Very good: Full of hope and luck.",
+            "Neutral: Success or failure depends on determination.",
+            "Good: Growth and success.",
+            "Very good: Great achievements and recognition.",
+            "Good: Support from influential people.",
+            "Good: Growth and accomplishment.",
+            "Bad: Many conflicts and obstacles.",
+            "Bad: Many hardships and illnesses.",
+            "Good: Careful work brings wisdom.",
+            "Very bad: Lost opportunities and failures.",
+            "Very good: Honor and major achievements.",
+            "Good: Success through personal effort.",
+            "Very good: Good luck and support from others.",
+            "Very bad: Many difficulties.",
+            "Good: Possible success and luck.",
+            "Very good: Rising fortune and business success.",
+            "Bad: Mixed luck, both good and bad.",
+            "Very good: Wealth and honor.",
+            "Very good: Good luck and success.",
+            "Good: Intelligence and progress.",
+            "Very bad: Endless difficulties.",
+            "Neutral: Must remain steady, avoid greed.",
+            "Bad: Many hardships and struggles.",
+            "Good: Obstacles can turn into success.",
+            "Neutral: May gain honor, but wealth is difficult.",
+            "Very good: Bright and prosperous future.",
+            "Neutral: Luck varies, sometimes good, sometimes bad.",
+            "Very good: Bright future, great luck.",
+            "Bad: Business losses.",
+            "Good: Patience can turn bad luck into fortune.",
+            "Bad: Difficulties in achieving goals.",
+            "Good: Prosperity and good fortune.",
+            "Very good: Endless obstacles.",
+            "Very good: Help and support from others.",
+            "Very good: Honor and wealth.",
+            "Neutral: Some obstacles, but also luck.",
+            "Neutral: Some obstacles, but also luck.",
+            "Neutral: Luck and obstacles come unexpectedly.",
+            "Good: Hard work leads to success.",
+            "Bad: Success comes with challenges.",
+            "Neutral: Hard work brings little reward.",
+            "Bad: Good appearance, but hidden difficulties.",
+            "Very bad: Endless obstacles, possible dangers.",
+            "Good: Hard work can change fate.",
+            "Neutral: Many obstacles, but luck comes later.",
+            "Bad: Decision-making difficulties.",
+            "Neutral: Confusion and hesitation.",
+            "Bad: Many obstacles.",
+            "Bad: Complicated problems, hard to achieve goals.",
+            "Good: Hard work leads to benefits.",
+            "Bad: Efforts with no real gain.",
+            "Good: Great luck and prosperity.",
+            "Neutral: Lacks confidence.",
+            "Very good: Success in all things, wealth flows in.",
+            "Good: Seizing opportunities leads to victory.",
+            "Bad: Unstable situation, easily deceived.",
+            "Bad: Business losses and confusion.",
+            "Neutral: Success depends on courage.",
+            "Bad: Gains turn into losses.",
+            "Good: Happiness and good luck.",
+            "Neutral: Struggles to achieve success.",
+            "Neutral: Luck is mixed, both good and bad.",
+            "Bad: Business losses and missed opportunities.",
+            "Good: Hardship first, happiness later.",
+            "Neutral: Gains and losses cancel out.",
+            "Neutral: Future is uncertain, little wealth.",
+            "Bad: Gains turn into losses.",
+            "Very good: Great success and fortune."
+        };
+        return fortunes[number - 1];
+    }
+}

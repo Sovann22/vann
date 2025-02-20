@@ -1,0 +1,20 @@
+package practices;
+
+import company.Employee;
+
+public class ShowEmpInfo {
+    public static void main(String[] args) {
+
+        Employee emp = new Employee();
+        
+        emp.setEmpInfo(101, "Dara", "2000-05-15", "Siem Reap", "Siem Reap", "010249446", "Dara@--gmail.com");
+        
+        System.out.println("Employee ID: " + emp.getEmpid());
+        System.out.println("Employee Name: " + emp.getEmpname());
+        System.out.println("Date of Birth: " + emp.getEmpdob());
+        System.out.println("Place of Birth: " + emp.getEmppod());
+        System.out.println("Address: " + emp.getEmpaddress());
+        System.out.println("Phone: " + emp.getEmpphone());
+        System.out.println("Email: " + emp.getEmpemail());
+    }
+}

@@ -1,0 +1,55 @@
+package homework1;
+
+import java.util.Scanner;
+
+public class homework {
+    public static double calculateTax(double salary) {
+        double tax = 0;
+        double[][] taxBrackets = {
+            {1500000, 0.0},
+            {2000000, 0.05},
+            {8500000, 0.10},
+            {12500000, 0.15},
+            {Double.MAX_VALUE, 0.20}
+        };
+        
+        double previousLimit = 0;
+        for (double[] bracket : taxBrackets) {
+            double limit = bracket[0];
+            double rate = bracket[1];
+            
+            if (salary > previousLimit) {
+                double taxableAmount = Math.min(salary, limit) - previousLimit;
+                tax += taxableAmount * rate;
+            } else {
+                break;
+            }
+            previousLimit = limit;
+        }
+        return tax;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("Enter your basic salary (Riels): ");
+        double basicSalary = scanner.nextDouble();
+        
+        System.out.print("Enter your fringe benefits (Riels): ");
+        double fringeBenefits = scanner.nextDouble();
+        double fringeBenefitsTaxable = fringeBenefits * 0.2;
+        
+        double totalIncome = basicSalary + fringeBenefitsTaxable;
+        double taxOnSalary = calculateTax(totalIncome);
+        double netSalary = totalIncome - taxOnSalary;
+        
+        System.out.println("\n-----------------------------");
+        System.out.printf("Your Salary (Riels)       : %,.2f\n", basicSalary);
+        System.out.printf("Fringe Benefits (Riels)   : %,.2f\n", fringeBenefits);
+        System.out.printf("Tax on Salary            : %,.2f Riels\n", taxOnSalary);
+        System.out.printf("Net Salary               : %,.2f Riels\n", netSalary);
+        System.out.println("-----------------------------");
+        
+        scanner.close();
+    }
+}

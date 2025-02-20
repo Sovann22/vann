@@ -1,0 +1,72 @@
+package practices;
+
+class Customer {
+    int id;
+    String name;
+    String address;
+    String phone;
+    double salary;
+
+    // No-argument constructor
+    public Customer() {
+        this.id = 0;
+        this.name = "Unknown";
+        this.address = "Unknown";
+        this.phone = "Unknown";
+        this.salary = 0.0;
+    }
+
+    // Constructor with one argument
+    public Customer(int id) {
+        this.id = id;
+        this.name = "Unknown";
+        this.address = "Unknown";
+        this.phone = "Unknown";
+        this.salary = 0.0;
+    }
+
+    // Constructor with two arguments
+    public Customer(int id, String name) {
+        this.id = id;
+        this.name = name;
+        this.address = "Unknown";
+        this.phone = "Unknown";
+        this.salary = 0.0;
+    }
+
+    // Constructor with three arguments
+    public Customer(int id, String name, String address) {
+        this.id = id;
+        this.name = name;
+        this.address = address;
+        this.phone = "Unknown";
+        this.salary = 0.0;
+    }
+
+    // Constructor with four arguments
+    public Customer(int id, String name, String address, String phone) {
+        this.id = id;
+        this.name = name;
+        this.address = address;
+        this.phone = phone;
+        this.salary = 0.0;
+    }
+
+    // Constructor with five arguments
+    public Customer(int id, String name, String address, String phone, double salary) {
+        this.id = id;
+        this.name = name;
+        this.address = address;
+        this.phone = phone;
+        this.salary = salary;
+    }
+
+    // Method to display customer info
+    public void displayCustomerInfo() {
+        System.out.println("ID: " + id);
+        System.out.println("Name: " + name);
+        System.out.println("Address: " + address);
+        System.out.println("Phone: " + phone);
+        System.out.println("Salary: " + salary);
+    }
+}

@@ -1,0 +1,56 @@
+package homework3;
+
+import java.text.DecimalFormat;
+import java.util.Scanner;
+
+public class homework3 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        DecimalFormat df = new DecimalFormat("R #,##0.00");
+        
+        System.out.println("===============================================");
+        System.out.println("=========Please Enter Loan Information=========");
+        System.out.println("===============================================");
+        System.out.print("Loan Amount: ");
+        double loanAmount = scanner.nextDouble();
+
+        System.out.print("Yearly Interest Rate (%): ");
+        double annualRate = scanner.nextDouble();
+
+        System.out.print("Loan Duration (Years): ");
+        int years = scanner.nextInt();
+
+        
+        double monthlyRate = (annualRate / 100) / 12;
+        int totalMonths = years * 12;
+
+      
+        double monthlyPayment = (loanAmount * monthlyRate) /
+                (1 - Math.pow(1 + monthlyRate, -totalMonths));
+
+        System.out.println("\n---------------------------------------------------------------------------------");
+        System.out.println("Repayment Schedule");
+        System.out.println("---------------------------------------------------------------------------------");
+        System.out.printf("%-7s %-15s %-12s %-12s %-12s %-15s\n",
+                "Period", "Beginning Balance", "Principal", "Interest", "Payment", "Ending Balance");
+        System.out.println("---------------------------------------------------------------------------------");
+
+        double balance = loanAmount;
+
+       
+        for (int i = 1; i <= totalMonths; i++) {
+            double interest = balance * monthlyRate;
+            double principal = monthlyPayment - interest;
+            double endingBalance = balance - principal;
+
+            System.out.printf("%-7d %-15s %-12s %-12s %-12s %-15s\n",
+                    i, df.format(balance), df.format(principal), df.format(interest),
+                    df.format(monthlyPayment), df.format(endingBalance));
+
+            balance = endingBalance;
+        }
+        System.out.println("----------------------------------------------------------------------------------");
+        scanner.close();
+    }
+}
+

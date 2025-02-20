@@ -1,0 +1,47 @@
+package homework2;
+
+import java.util.Scanner;
+
+public class homework2 {
+    public static void calculateRepaymentSchedule(double loanAmount, double yearlyRate, int duration) {
+        double monthlyRate = yearlyRate / 12 / 100;
+        int totalMonths = duration * 12;
+        double monthlyPayment = (loanAmount * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -totalMonths));
+        
+        System.out.println("\n-----------------------------");
+        System.out.printf("Loan Amount: %,.2f\n", loanAmount);
+        System.out.printf("Yearly Interest Rate: %.2f%%\n", yearlyRate);
+        System.out.printf("Duration: %d years\n", duration);
+        System.out.printf("Monthly Payment: %,.2f\n", monthlyPayment);
+        System.out.println("\nRepayment Schedule:");
+        
+        double balance = loanAmount;
+        for (int month = 1; month <= totalMonths; month++) {
+            double interest = balance * monthlyRate;
+            double principal = monthlyPayment - interest;
+            balance -= principal;
+            
+            System.out.printf("Month %d: Payment = %,.2f, Principal = %,.2f, Interest = %,.2f, Remaining Balance = %,.2f\n",
+                              month, monthlyPayment, principal, interest, balance);
+        }
+        System.out.println("-----------------------------");
+    }
+    
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("Enter Loan Amount: ");
+        double loanAmount = scanner.nextDouble();
+        
+        System.out.print("Enter Yearly Interest Rate (%): ");
+        double yearlyRate = scanner.nextDouble();
+        
+        System.out.print("Enter Duration (years): ");
+        int duration = scanner.nextInt();
+        
+        calculateRepaymentSchedule(loanAmount, yearlyRate, duration);
+        
+        scanner.close();
+    }
+}
+
